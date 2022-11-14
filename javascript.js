@@ -4,7 +4,10 @@ const rand = word[Math.floor(Math.random()*word.length)];
 console.log(rand);
 const bla = rand.split('');
 const maj = bla.shift();
-bla.forEach( x => x.replace(x, "_"));
+const underscore = "_".repeat(bla.length);
+
+console.log(maj + underscore);
+
 
 
 // const mot = document.getElementById("mot");
