@@ -6,10 +6,8 @@ const bla = rand.split('');
 const maj = bla.shift();
 const underscore = "_".repeat(bla.length);
 
-console.log(maj + underscore);
+const resultat = maj + underscore;
 
-
-
-// const mot = document.getElementById("mot");
-// mot.innerHTML += rand; 
+const mot = document.getElementById('mot');
+mot.innerHTML += resultat; 
 
