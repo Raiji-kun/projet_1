@@ -15,9 +15,9 @@ const tabAlphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o"
 const block = document.getElementById('alphabet');
 
 
-tabAlphabet.forEach( x => {
+tabAlphabet.forEach( (x,indice) => {
     var div = document.createElement('div');
-    div.setAttribute("id", "case");
+    div.setAttribute("id", `case${indice}`);
     div.textContent = x;
     block.appendChild(div);
 });
@@ -33,6 +33,9 @@ tabAlphabet.forEach( x => {
 // Le motif du pendu change ;
 // Si le pendu est tué, le joueur perd.
 
+
+let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+// let choixUtilisateur = prompt("Choisir une lettre")
 
 
 // let verification = alphabet.indexOf(choixUtilisateur);
