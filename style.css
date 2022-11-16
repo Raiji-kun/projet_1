@@ -55,3 +55,21 @@
     height: 850px;
     border: solid red 1px;
 }
+button {
+    padding: 15px 30px;
+    font-size: 1.5em;
+    border: 0;
+    border-radius: 5px;
+}
+
+#btn1:hover {
+    color: blue;
+    font-weight: bold;
+    transform: scale(1.1);
+}
+
+#btn2:hover {
+    color: red;
+    font-weight: bold;
+    transform: scale(1.1);
+}
