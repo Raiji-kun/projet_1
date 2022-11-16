@@ -33,28 +33,34 @@ tabAlphabet.forEach( (x,indice) => {
 // Le motif du pendu change ;
 // Si le pendu est tué, le joueur perd.
 
+
 let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 // let choixUtilisateur = prompt("Choisir une lettre")
 
-let verification = alphabet.indexOf(choixUtilisateur);
+
+// let verification = alphabet.indexOf(choixUtilisateur);
 
 let boutonValider = document.getElementById('btn1');
 let boutonAnnuler = document.getElementById('btn2');
 
 let coup = 10;
 
+
+
 boutonValider.onclick = () => {
     if(coup > 0){
         coup--;
         console.log(coup);
+        let nombreDeCoup = document.getElementById('nombredecoup')
+        nombreDeCoup.innerHTML = `Il vous reste  ${coup}  coups`;
     }
     return coup;
 }
 
 
 
-
-
+// let nombreDeCoup = document.getElementById('nombredecoup')
+// nombreDeCoup.innerHTML += `Il vous reste  ${coup}  coups`;
 
 
 
