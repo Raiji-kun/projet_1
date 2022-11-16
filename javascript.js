@@ -36,19 +36,44 @@ tabAlphabet.forEach( (x,indice) => {
 let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
 // let choixUtilisateur = prompt("Choisir une lettre")
 
-let verification = alphabet.indexOf(choixUtilisateur);
 
 let boutonValider = document.getElementById('btn1');
 let boutonAnnuler = document.getElementById('btn2');
 
 let coup = 10;
 
-boutonValider.onclick = () => {
-    if(coup > 0){
-        coup--;
-        console.log(coup);
+let selectedLetter = null;
+let selectedElement = null;
+
+const nbrDiv = document.getElementById('alphabet').children.length;
+for(let i = 0; i <nbrDiv;i++){
+    const fenetre = document.getElementById('case'+i);
+ 
+     fenetre.addEventListener('click',test );
+    
+     function test(){
+        if(selectedElement != null){ 
+            selectedElement.classList.remove('tamere');
+        }
+        const letter = fenetre.textContent;
+        this.classList.add('tamere');
+        selectedLetter = letter;
+        selectedElement = this;
+
     }
-    return coup;
+}
+
+
+
+boutonValider.onclick = (e) => {
+    if(bla.indexOf(selectedLetter) >= 0 ){
+        alert("ok");
+    } else{
+        coup--;
+        // console.log(coup);
+         let nombreDeCoup = document.getElementById('nombredecoup');
+         nombreDeCoup.innerHTML = `Il vous reste  ${coup}  coups`;
+    }
 }
 
 
