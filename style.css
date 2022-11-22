@@ -220,8 +220,14 @@
     height: 100px;
     border: solid blue 1px;
 }
-
-
+#btnPrompt{
+    padding: 5px 10px;
+}
+#btnPrompt:hover{
+    color: blue;
+    font-weight: bold;
+    transform: scale(1.1);
+}
 
 #blockDroite{
     width: 28%;
@@ -250,6 +256,23 @@ button {
     border: solid blue 1px;
 }
 
+
+#dessin{
+    height: 50%;
+    width: 100%;
+    border: solid purple 1px;
+}
+#nombredecoup{
+    height: 50%;
+    width: 100%;
+    padding-left: 180px;
+    padding-top: 200px;
+    border: solid purple 1px;
+}
+#label{
+    font-size: 1.5em;
+}
+
 .bonneReponse{
     background-color: green ;
     opacity: 0.6;    
@@ -257,4 +280,6 @@ button {
 
 .mauvaiseReponse{
     background-color:#a0a0a0;-moz-opacity:0.38; opacity:0.38; filter:alpha(opacity=38); -khtml-opacity:0.38
+
 }
+

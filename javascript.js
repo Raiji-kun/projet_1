@@ -92,6 +92,39 @@ function valider(){
          nombreDeCoup.innerHTML = `Il vous reste  ${coup}  coups`;
          selectedElement.classList.add('mauvaiseReponse');
         // listItem.replaceWith(da);
+
+    }
+}
+
+boutonAnnuler.onclick = () => {
+        selectedElement.classList.remove('tamere');
+    
+}
+
+
+const resete = document.getElementById('gg');
+resete.addEventListener("click", reset);
+
+function reset(){
+
+location.reload();
+}
+// const content = document.getElementById("alphabet").innerHTML;
+// function updateDiv()
+// { 
+    
+//     document.getElementById("alphabet").innerHTML = content;
+// }
+
+
+
+function verifChampInput(){
+    let input = document.getElementById('input').value;
+    if(input === ""){
+        alert("Veuillez remplir le champ")
+        return false;
+    }else{
+        return true;
     }
 }
 
@@ -110,6 +143,30 @@ location.reload();
 //     document.getElementById("alphabet").innerHTML = content;
 // }
 
+
+
+
+
+function verifMotInput() {
+    let input = document.getElementById('input').value;
+    if (input.match(/[^a-zA-Z]/g)) {
+        alert('Rentrez des caractères valide');
+    }
+        if(input.toLocaleLowerCase() === rand.toLocaleLowerCase()){
+            alert("Bien jouer; vous avez trouver le mot!");
+        }else{
+            alert("le mot entrer est incorect");
+        }
+    
+    
+}
+
+let valueInput = document.getElementById('btnPrompt');
+
+valueInput.onclick = () => {
+    verifChampInput();
+    verifMotInput();
+}
 
 
 
