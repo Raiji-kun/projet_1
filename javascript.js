@@ -1,13 +1,12 @@
-const word = ["Element", "Montagne", "Ordinateur", "Naruto"];
+const word = ["Element", "Montagne", "Ordinateur", "Naruto", "elemente"];
 
 const rand = word[Math.floor(Math.random()*word.length)];
 console.log(rand);
 const bla = rand.split('');
 const maj = bla.shift();
 const underscore = "_".repeat(bla.length);
-
 const resultat = maj + underscore;
-
+console.log(bla);
 const mot = document.getElementById('mot');
 mot.innerHTML += resultat; 
 
@@ -52,9 +51,9 @@ let selectedLetter = null;
 let selectedElement = null;
 
 const nbrDiv = document.getElementById('alphabet').children.length;
+
 for(let i = 0; i <nbrDiv;i++){
     const fenetre = document.getElementById('case'+i);
- 
      fenetre.addEventListener('click',test );
     
      function test(){
@@ -65,21 +64,34 @@ for(let i = 0; i <nbrDiv;i++){
         this.classList.add('tamere');
         selectedLetter = letter;
         selectedElement = this;
-
+        
     }
+
 }
 
+boutonValider.addEventListener("click", valider);
+      let tab = resultat.split('');
 
-
-boutonValider.onclick = (e) => {
+function valider(){
     if(bla.indexOf(selectedLetter) >= 0 ){
-        alert("ok");
+        selectedElement.classList.add('bonneReponse');
+   
+        let filtrageLetter = bla.filter( x => x == selectedLetter);
+        while(filtrageLetter.length != 0 ){
+        let  ed = filtrageLetter.shift();
+        let numb = bla.indexOf(selectedLetter);
+         tab[numb+1] = ed;
+         bla[numb]= ".";
+        } 
+         const replaceLetter = tab.join('');
+         document.getElementById("mot").innerHTML = replaceLetter;
+
     } else{
         coup--;
-        // console.log(coup);
          let nombreDeCoup = document.getElementById('nombredecoup');
          nombreDeCoup.innerHTML = `Il vous reste  ${coup}  coups`;
-
+         selectedElement.classList.add('mauvaiseReponse');
+        // listItem.replaceWith(da);
     }
 }
 
@@ -89,9 +101,21 @@ boutonAnnuler.onclick = () => {
 }
 
 
+const resete = document.getElementById('gg');
+resete.addEventListener("click", reset);
 
-// let nombreDeCoup = document.getElementById('nombredecoup')
-// nombreDeCoup.innerHTML += `Il vous reste  ${coup}  coups`;
+function reset(){
+
+location.reload();
+}
+// const content = document.getElementById("alphabet").innerHTML;
+// function updateDiv()
+// { 
+    
+//     document.getElementById("alphabet").innerHTML = content;
+// }
+
+
 
 function verifChampInput(){
     let input = document.getElementById('input').value;
