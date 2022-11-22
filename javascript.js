@@ -83,10 +83,50 @@ boutonValider.onclick = (e) => {
     }
 }
 
+boutonAnnuler.onclick = () => {
+        selectedElement.classList.remove('tamere');
+    
+}
+
 
 
 // let nombreDeCoup = document.getElementById('nombredecoup')
 // nombreDeCoup.innerHTML += `Il vous reste  ${coup}  coups`;
+
+function verifChampInput(){
+    let input = document.getElementById('input').value;
+    if(input === ""){
+        alert("Veuillez remplir le champ")
+        return false;
+    }else{
+        return true;
+    }
+}
+
+
+
+
+
+function verifMotInput() {
+    let input = document.getElementById('input').value;
+    if (input.match(/[^a-zA-Z]/g)) {
+        alert('Rentrez des caractères valide');
+    }
+        if(input.toLocaleLowerCase() === rand.toLocaleLowerCase()){
+            alert("Bien jouer; vous avez trouver le mot!");
+        }else{
+            alert("le mot entrer est incorect");
+        }
+    
+    
+}
+
+let valueInput = document.getElementById('btnPrompt');
+
+valueInput.onclick = () => {
+    verifChampInput();
+    verifMotInput();
+}
 
 
 
