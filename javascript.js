@@ -92,6 +92,7 @@ function valider(){
          nombreDeCoup.innerHTML = `Il vous reste  ${coup}  coups`;
          selectedElement.classList.add('mauvaiseReponse');
         // listItem.replaceWith(da);
+
     }
 }
 
@@ -128,6 +129,21 @@ function verifChampInput(){
 }
 
 
+const resete = document.getElementById('gg');
+resete.addEventListener("click", reset);
+
+function reset(){
+
+location.reload();
+}
+// const content = document.getElementById("alphabet").innerHTML;
+// function updateDiv()
+// { 
+    
+//     document.getElementById("alphabet").innerHTML = content;
+// }
+
+
 
 
 
@@ -151,6 +167,7 @@ valueInput.onclick = () => {
     verifChampInput();
     verifMotInput();
 }
+
 
 
 

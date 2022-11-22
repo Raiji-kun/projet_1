@@ -256,7 +256,7 @@ button {
     border: solid blue 1px;
 }
 
-<<<<<<< HEAD
+
 #dessin{
     height: 50%;
     width: 100%;
@@ -272,7 +272,7 @@ button {
 #label{
     font-size: 1.5em;
 }
-=======
+
 .bonneReponse{
     background-color: green ;
     opacity: 0.6;    
@@ -280,5 +280,6 @@ button {
 
 .mauvaiseReponse{
     background-color:#a0a0a0;-moz-opacity:0.38; opacity:0.38; filter:alpha(opacity=38); -khtml-opacity:0.38
+
 }
->>>>>>> 25ffa4e8d6433651dea186fbb50641e86a5ee9ab
+
