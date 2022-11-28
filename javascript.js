@@ -44,7 +44,7 @@ let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
 let boutonValider = document.getElementById('btn1');
 let boutonAnnuler = document.getElementById('btn2');
 
-let coup = 10;
+let coup = 8;
 
 
 let selectedLetter = null;
@@ -86,16 +86,29 @@ function valider(){
          const replaceLetter = tab.join('');
          document.getElementById("mot").innerHTML = replaceLetter;
 
-    } else{
+    }
+    else{
         coup--;
          let nombreDeCoup = document.getElementById('nombredecoup');
-         nombreDeCoup.innerHTML = `Il vous reste  ${coup}  coups`;
+
+         let image = document.createElement('img');
+         let pendu = document.getElementById('pendu');
+         let removePendu = document.getElementById('imagePendu');
+         image.setAttribute("id", `imagePendu`);
+         image.setAttribute("src", `image/Capture${coup}.PNG`);
+         pendu.appendChild(image);
+         nombreDeCoup.innerHTML = `Il vous reste  ${coup}  coups`;    
          selectedElement.classList.add('mauvaiseReponse');
         // listItem.replaceWith(da);
-
+        // deleteElement();
+        removePendu.remove();
+        
     }
 }
-
+// function deleteElement(){
+//     let black = document.getElementById('imagePendu');
+//     black.remove();
+// }
 boutonAnnuler.onclick = () => {
         selectedElement.classList.remove('tamere');
     
@@ -107,7 +120,7 @@ resete.addEventListener("click", reset);
 
 function reset(){
 
-location.reload();
+ location.reload(false);
 }
 // const content = document.getElementById("alphabet").innerHTML;
 // function updateDiv()
@@ -129,19 +142,6 @@ function verifChampInput(){
 }
 
 
-const resete = document.getElementById('gg');
-resete.addEventListener("click", reset);
-
-function reset(){
-
-location.reload();
-}
-// const content = document.getElementById("alphabet").innerHTML;
-// function updateDiv()
-// { 
-    
-//     document.getElementById("alphabet").innerHTML = content;
-// }
 
 
 
