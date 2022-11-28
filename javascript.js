@@ -85,6 +85,15 @@ function valider(){
         } 
          const replaceLetter = tab.join('');
          document.getElementById("mot").innerHTML = replaceLetter;
+         console.log(replaceLetter)
+         if(replaceLetter === rand){
+            alert("Bien jouer; vous avez trouver le mot!");
+            let recomencer = confirm('Voulez vous recomencer?');
+            console.log(recomencer);
+            if(recomencer == true){
+                location.reload();
+            }
+        }
 
     }
     else{
@@ -101,6 +110,14 @@ function valider(){
          selectedElement.classList.add('mauvaiseReponse');
         // listItem.replaceWith(da);
         // deleteElement();
+        if(coup <= 0){
+            alert('Vous avez perdu !')
+            let recomencer = confirm('Voulez vous recomencer?');
+            console.log(recomencer);
+            if(recomencer == true){
+                location.reload();
+            }
+        }
         removePendu.remove();
         
     }
@@ -141,6 +158,11 @@ function verifChampInput(){
     }
 }
 
+boutonAnnuler.onclick = () => {
+        selectedElement.classList.remove('tamere');
+    
+}
+
 
 
 
@@ -167,6 +189,63 @@ valueInput.onclick = () => {
     verifChampInput();
     verifMotInput();
 }
+
+
+function verifChampInput(){
+    let input = document.getElementById('input').value;
+    if(input === ""){
+        alert("Veuillez remplir le champ")
+        return false;
+    }else{
+        return true;
+    }
+}
+
+
+
+
+
+function verifMotInput() {
+    let input = document.getElementById('input').value;
+    if (input.match(/[^a-zA-Z]/g)) {
+        return alert('Rentrez des caractères valide');
+    }
+        if(input.toLocaleLowerCase() === rand.toLocaleLowerCase()){
+            alert("Bien jouer; vous avez trouver le mot!");
+            let recomencer = confirm('Voulez vous recomencer?');
+            console.log(recomencer);
+            if(recomencer == true){
+                location.reload();
+            }
+        }else{
+            alert("le mot entrer est incorect");
+            coup--;
+            let image = document.createElement('img');
+            let pendu = document.getElementById('pendu');
+            let removePendu = document.getElementById('imagePendu');
+            image.setAttribute("id", `imagePendu`);
+            image.setAttribute("src", `image/Capture${coup}.PNG`);
+            pendu.appendChild(image);
+            if(coup <= 0){
+                alert('Vous avez perdu !')
+                let nombreDeCoup = document.getElementById('nombredecoup');
+                nombreDeCoup.innerHTML = `Il vous reste  0  coups`;
+                let recomencer = confirm('Voulez vous recomencer?');
+                console.log(recomencer);
+                if(recomencer == true){
+                    location.reload();
+                }
+            }else{
+                let nombreDeCoup = document.getElementById('nombredecoup');
+                nombreDeCoup.innerHTML = `Il vous reste  ${coup}  coups`;
+
+            }
+            removePendu.remove();
+        }
+    
+    
+}
+
 
 
 
