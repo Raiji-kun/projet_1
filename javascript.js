@@ -1,18 +1,21 @@
-const word = ["Element", "Montagne", "Ordinateur", "Naruto", "elemente"];
+const motOfTabs = ["Element", "Montagne", "Ordinateur", "Naruto", "elemente"];
 
-const rand = word[Math.floor(Math.random()*word.length)];
-console.log(rand);
-const bla = rand.split('');
-const maj = bla.shift();
-const underscore = "_".repeat(bla.length);
+const randomWord = motOfTabs[Math.floor(Math.random()*motOfTabs.length)];
+const tabWord = randomWord.split('');
+// get the first letter
+const maj = tabWord.shift();
+
+// firstLetter + "_" 
+const underscore = "_".repeat(tabWord.length);
 const resultat = maj + underscore;
-console.log(bla);
-const mot = document.getElementById('mot');
-mot.innerHTML += resultat; 
 
+// print on DOM
+const mot = document.getElementById('mot');
+mot.innerHTML += resultat;
+
+// create many 26 div with the length of tabAlphabet and print on the DOM
 const tabAlphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 const block = document.getElementById('alphabet');
-
 
 tabAlphabet.forEach( (x,indice) => {
     var div = document.createElement('div');
@@ -20,75 +23,50 @@ tabAlphabet.forEach( (x,indice) => {
     div.textContent = x;
     block.appendChild(div);
 });
-// const mot = document.getElementById("mot");
-// mot.innerHTML += rand; 
-
-// Le joueur clique sur une lettre de l'alphabet / écrit une lettre de l'alphabet (encore une fois, libre à vous de décider ce que vous souhaitez proposer).
-// La lettre est présente dans le mot proposé :
-// Toutes les lettres "e" (par exemple si le joueur propose "e") sont affichées sur le mot secret et le joueur passe à la manche d'après.
-
-// La lettre est introuvable dans le mot proposé :
-// Le joueur perd un coup ;
-// Le motif du pendu change ;
-// Si le pendu est tué, le joueur perd.
-
-
-let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
-// let choixUtilisateur = prompt("Choisir une lettre")
-
-
-
-// let verification = alphabet.indexOf(choixUtilisateur);
-
-
-let boutonValider = document.getElementById('btn1');
-let boutonAnnuler = document.getElementById('btn2');
 
 let coup = 8;
-
-
 let selectedLetter = null;
 let selectedElement = null;
-
 const nbrDiv = document.getElementById('alphabet').children.length;
 
 for(let i = 0; i <nbrDiv;i++){
     const fenetre = document.getElementById('case'+i);
-     fenetre.addEventListener('click',test );
+     fenetre.addEventListener('click',selectCase );
     
-     function test(){
+     function selectCase(){
         if(selectedElement != null){ 
-            selectedElement.classList.remove('tamere');
+            selectedElement.classList.remove('colorSelect');
         }
         const letter = fenetre.textContent;
-        this.classList.add('tamere');
+        this.classList.add('colorSelect');
         selectedLetter = letter;
         selectedElement = this;
         
     }
-
 }
 
+
+let boutonValider = document.getElementById('btn1');
 boutonValider.addEventListener("click", valider);
-      let tab = resultat.split('');
+let tab = resultat.split('');
 
 function valider(){
-    if(bla.indexOf(selectedLetter) >= 0 ){
+    if(tabWord.indexOf(selectedLetter) >= 0 ){
         selectedElement.classList.add('bonneReponse');
    
-        let filtrageLetter = bla.filter( x => x == selectedLetter);
+        let filtrageLetter = tabWord.filter( x => x == selectedLetter);
         while(filtrageLetter.length != 0 ){
         let  ed = filtrageLetter.shift();
-        let numb = bla.indexOf(selectedLetter);
+        let numb = tabWord.indexOf(selectedLetter);
          tab[numb+1] = ed;
-         bla[numb]= ".";
+         tabWord[numb]= ".";
         } 
          const replaceLetter = tab.join('');
          document.getElementById("mot").innerHTML = replaceLetter;
          console.log(replaceLetter)
-         if(replaceLetter === rand){
+         if(replaceLetter === randomWord){
             alert("Bien jouer; vous avez trouver le mot!");
-            let recomencer = confirm('Voulez vous recomencer?');
+            let recomencer = confirm('Voulez vous recommencer?');
             console.log(recomencer);
             if(recomencer == true){
                 location.reload();
@@ -99,7 +77,6 @@ function valider(){
     else{
         coup--;
          let nombreDeCoup = document.getElementById('nombredecoup');
-
          let image = document.createElement('img');
          let pendu = document.getElementById('pendu');
          let removePendu = document.getElementById('imagePendu');
@@ -122,17 +99,15 @@ function valider(){
         
     }
 }
-// function deleteElement(){
-//     let black = document.getElementById('imagePendu');
-//     black.remove();
-// }
+
+
+let boutonAnnuler = document.getElementById('btn2');
 boutonAnnuler.onclick = () => {
-        selectedElement.classList.remove('tamere');
+        selectedElement.classList.remove('colorSelect');
     
 }
 
-
-const resete = document.getElementById('gg');
+const resete = document.getElementById('btn3');
 resete.addEventListener("click", reset);
 
 function reset(){
@@ -146,8 +121,6 @@ function reset(){
 //     document.getElementById("alphabet").innerHTML = content;
 // }
 
-
-
 function verifChampInput(){
     let input = document.getElementById('input').value;
     if(input === ""){
@@ -159,27 +132,19 @@ function verifChampInput(){
 }
 
 boutonAnnuler.onclick = () => {
-        selectedElement.classList.remove('tamere');
-    
+        selectedElement.classList.remove('colorSelect');
 }
-
-
-
-
-
-
 
 function verifMotInput() {
     let input = document.getElementById('input').value;
     if (input.match(/[^a-zA-Z]/g)) {
         alert('Rentrez des caractères valide');
     }
-        if(input.toLocaleLowerCase() === rand.toLocaleLowerCase()){
+        if(input.toLocaleLowerCase() === randomWord.toLocaleLowerCase()){
             alert("Bien jouer; vous avez trouver le mot!");
         }else{
             alert("le mot entrer est incorect");
         }
-    
     
 }
 
@@ -202,15 +167,12 @@ function verifChampInput(){
 }
 
 
-
-
-
 function verifMotInput() {
     let input = document.getElementById('input').value;
     if (input.match(/[^a-zA-Z]/g)) {
         return alert('Rentrez des caractères valide');
     }
-        if(input.toLocaleLowerCase() === rand.toLocaleLowerCase()){
+        if(input.toLocaleLowerCase() === randomWord.toLocaleLowerCase()){
             alert("Bien jouer; vous avez trouver le mot!");
             let recomencer = confirm('Voulez vous recomencer?');
             console.log(recomencer);
