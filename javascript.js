@@ -1,23 +1,23 @@
-const motOfTabs = ["Element", "Montagne", "Ordinateur", "Naruto", "elemente"];
+const tabOfWord = ["Element", "Montagne", "Ordinateur", "Naruto", "elemente"];
 
-const randomWord = motOfTabs[Math.floor(Math.random()*motOfTabs.length)];
+const randomWord = tabOfWord[Math.floor(Math.random()*tabOfWord.length)];
 const tabWord = randomWord.split('');
 // get the first letter
 const maj = tabWord.shift();
 
 // firstLetter + "_" 
 const underscore = "_".repeat(tabWord.length);
-const resultat = maj + underscore;
+const result = maj + underscore;
 
 // print on DOM
 const mot = document.getElementById('mot');
-mot.innerHTML += resultat;
+mot.innerHTML += result;
 
-// create many 26 div with the length of tabAlphabet and print on the DOM
-const tabAlphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+// create many 26 div with the length of alphabetTab and print on the DOM
+const alphabetTab = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 const block = document.getElementById('alphabet');
 
-tabAlphabet.forEach( (x,indice) => {
+alphabetTab.forEach( (x,indice) => {
     var div = document.createElement('div');
     div.setAttribute("id", `case${indice}`);
     div.textContent = x;
@@ -48,7 +48,7 @@ for(let i = 0; i <nbrDiv;i++){
 
 let boutonValider = document.getElementById('btn1');
 boutonValider.addEventListener("click", valider);
-let tab = resultat.split('');
+let tab = result.split('');
 
 function valider(){
     if(tabWord.indexOf(selectedLetter) >= 0 ){
